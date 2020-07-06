@@ -1,0 +1,28 @@
+const Web3 = require('web3')
+const web3 = new Web3('https://mainnet.infura.io/v3/83379cec49f241f7b5daacf58df82824')
+
+//start by retrieving the latest blocks (1)
+//the getblock fxn is followed by a promise chain
+web3.eth.getBlockNumber().then(console.log)
+
+//get the lock and display important information (2)
+//getblock can use "latest", specify a number, or use a txn hash
+web3.eth.getBlock('latest').then((block) => { 
+  console.log({
+    blockHash: block.hash,
+    blockNumber: block.number,
+  })
+})
+
+//improved function for getting last 10 blocks only (3)
+web3.eth.getBlockNumber().then(latest) => {
+  for (let i = 0; i < 10; i ++)
+    web3.eth.getblock(latest - i).then(block) => {
+      console.log(block.number)
+    })
+  }
+})
+
+//getting a transaction from a block
+const hash = 'contract address)
+web3.eth.getTransactionFromBlock(hash, 2).then(console.log)
