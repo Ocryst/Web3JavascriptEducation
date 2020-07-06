@@ -1,0 +1,27 @@
+const Web3 = require('web3')
+const web3 = new Web3('https://mainnet.infura.io/v3/83379cec49f241f7b5daacf58df82824')
+
+//JS can interface with the underscore library
+//Important for using features lacking in JS
+const _ = web3.utils
+
+//basic web3 script that pulls gas prices
+web3.eth.getGasPrice().then((results) => {
+  web3.utils.fromWei(result, 'ether'))
+})
+
+//utilize a hashing fxn and web3 utils to pull the gas price
+//must be wrapped in a 'string' or else it will not run the hashing fxn
+web3.utils.soliditySha3('Dapp University')
+
+//different ways to pull the same logs
+console.log(web3.utils.keccack256('Dapp University'))
+console.log(web3.utils.randomHex('32'))
+console.log(web3.utils._)
+
+//utilize the underscore js library
+//can pluck off the values from keys and iterate over pairs
+_.each({ key1: 'value1', key2: 'value2' }, (value, key) => {
+  console.log(key)
+})
+
